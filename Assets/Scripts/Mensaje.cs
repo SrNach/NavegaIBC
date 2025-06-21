@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using TMPro;
 using UnityEngine.InputSystem;
 
 public class Mensaje : MonoBehaviour
@@ -33,10 +32,22 @@ public class Mensaje : MonoBehaviour
         float tiempo = 0;
         bool fueTocado = false;
 
-        // Espera hasta que pasen 4 segundos o se toque la pantalla
+
         while (tiempo < tiempoEnPantalla && !fueTocado)
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame || Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+            if (Touchscreen.current != null)
+            {
+                foreach (var touch in Touchscreen.current.touches)
+                {
+                    if (touch.press.wasPressedThisFrame)
+                    {
+                        fueTocado = true;
+                        break;
+                    }
+                }
+            }
+
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 fueTocado = true;
             }
@@ -47,12 +58,12 @@ public class Mensaje : MonoBehaviour
 
         Time.timeScale = 1;
 
-        // Fade out
-        float fade = 0;
+        float fade = 0f;
         while (fade < duracionDesvanecer)
         {
             fade += Time.unscaledDeltaTime;
-            canvasGroup.alpha = Mathf.Lerp(1, 0, fade / duracionDesvanecer);
+            float t = Mathf.Clamp01(fade / duracionDesvanecer);
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, t);
             yield return null;
         }
 

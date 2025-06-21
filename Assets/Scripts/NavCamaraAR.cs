@@ -50,9 +50,10 @@ public class NavCamaraAR : MonoBehaviour
         }
     }
 
-    // Funcion boton
     public void yaLlegue()
     {
+        ARCamera.transform.position = Vector3.zero;
+        ARCamera.transform.rotation = Quaternion.identity;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }
