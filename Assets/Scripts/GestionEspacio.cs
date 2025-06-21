@@ -45,7 +45,7 @@ public class GestionEspacio : MonoBehaviour
         espacios[19] = new Sala(19, "IBC 1-3", 1, 0, true, new Vector3(-18.75f, -1.26f, 39.14f)); 
         espacios[20] = new Sala(20, "IBC 2-11", 2, 0, true, new Vector3(14f, 5.32f, 5.36f)); 
         espacios[21] = new Bano(21, "Baño discapacitados", 1, 2, new Vector3(15.22f, -0.32f, 0.44f)); 
-        espacios[22] = new Otros(22, "Aulario", 0, new Vector3(-2.83f, -1.26f, 9.362f));
+        espacios[22] = new Otros(22, "Aulario Mayor", 0, new Vector3(-2.83f, -1.26f, 9.362f));
         espacios[23] = new Sala(23, "Laboratorio", 2, 0, true, new Vector3(-13.26f, 5.32f, 13.55f));
     }
 
